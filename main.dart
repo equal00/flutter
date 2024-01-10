@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '/main/SearchPage.dart';
 import 'main/GenerPage.dart';
-import 'main/Mypage.dart';
 
 void main() => runApp(const MyApp());
 
@@ -36,7 +35,6 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _widgetOptions = <Widget>[
     GenerPage(),
     Searchpage(),
-    Mypage(),
   ];
 
   void _onItemTapped(int index) {
@@ -62,13 +60,9 @@ class _MainPageState extends State<MainPage> {
             icon: Icon(Icons.search),
             label: '검색',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.people),
-            label: '마이페이지',
-          ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.lightGreen,
+        selectedItemColor: Colors.blue,
         onTap: _onItemTapped,
       ),
     );

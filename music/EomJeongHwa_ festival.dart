@@ -37,20 +37,45 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("엄정화 - 페스티벌"),
-        centerTitle: true,
-        backgroundColor: Colors.redAccent,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(kToolbarHeight), // AppBar의 기본 높이
+        child: Container(
+          decoration: const BoxDecoration(
+            // 배경 이미지 설정
+            image: DecorationImage(
+                image: AssetImage('assets/images/페스티벌 상단바.png'),
+                fit: BoxFit.fitWidth // 원하시는 이미지 경로를 사용하세요.
+                ),
+          ),
+          child: AppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.transparent, // AppBar의 배경색을 투명하게 설정
+            elevation: 0, // AppBar의 그림자 제거
+            actions: <Widget>[
+              IconButton(
+                icon: Image.asset(
+                  'assets/images/화살표.png',
+                  fit: BoxFit.cover,
+                  height: 20,
+                  width: 35,
+                ),
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+        ),
       ),
       body: Container(
-        color: Color(0xFFE9B69B),
+        color: const Color(0xFF538BDE),
         child: ListView(
           padding: const EdgeInsets.only(left: 15, right: 15),
           // Center 위젯을 추가하여 컬럼을 화면 중앙에 정렬합니다.
           children: <Widget>[
             const Text('0단계: 기본 동작', style: TextStyle(fontSize: 20)),
-            Container(
-              height: 100,
+            AspectRatio(
+              aspectRatio: 4.0,
               child: GridView.count(
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
@@ -75,7 +100,6 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                           fit: BoxFit.fill),
                     ),
                   ),
-
                   InkWell(
                     onTap: () {
                       String videoUrl = "https://youtu.be/SCj0oOXtcQ0";
@@ -156,9 +180,9 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                 ],
               ),
             ),
-            const Text('1단계: 파트 동작', style: TextStyle(fontSize: 20)),
-            Container(
-              height: 375, // GridView를 사용하면 더 많은 공간이 필요할 수 있습니다.
+            const Text('1단계: 전체 춤 확인동작', style: TextStyle(fontSize: 20)),
+            AspectRatio(
+              aspectRatio: 1.0,
               child: GridView.count(
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
@@ -467,9 +491,9 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                 ],
               ),
             ),
-            const Text('2단계: 부분 동작', style: TextStyle(fontSize: 20)),
-            Container(
-              height: 90,
+            const Text('2단계: 1단계의 각 파트를 합친 동작', style: TextStyle(fontSize: 20)),
+            AspectRatio(
+              aspectRatio: 4.0,
               child: GridView.count(
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
@@ -555,7 +579,7 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                 ],
               ),
             ),
-            const Text('3단계: 모든 춤', style: TextStyle(fontSize: 20)),
+            const Text('3단계: 모든 파트를 합친 동작', style: TextStyle(fontSize: 20)),
             Container(
               height: 125,
               child: ListView(
@@ -573,7 +597,11 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                         ),
                       );
                     },
-                    child: const Text('모든 춤 확인'),
+                    child: Semantics(
+                      label: '3단계 전체 춤 동작',
+                      child: Image.asset('assets/images/페스티벌/3단계/페스티벌_전체춤.png',
+                          fit: BoxFit.cover),
+                    ),
                   ),
                 ],
               ),

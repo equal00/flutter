@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../part/Jisoo_flower/jisoo_flower_part1.dart';
+import '../part/Jisoo_flower/Level 0/Jisoo_flower_Y.dart';
 
 class JisooFlower extends StatefulWidget {
   const JisooFlower({Key? key}) : super(key: key);
@@ -12,176 +12,63 @@ class JisooFlower extends StatefulWidget {
 class _JIsooFlowerState extends State<JisooFlower> {
   @override
   Widget build(BuildContext context) {
-    final ButtonStyle style = ElevatedButton.styleFrom(
-        textStyle: const TextStyle(fontSize: 20), minimumSize: Size(100, 60));
     return Scaffold(
       appBar: AppBar(
-        title: Text("Jisoo_flower"),
+        title: const Text("지수 - 꽃",
+            style: TextStyle(color: Colors.black, fontSize: 18.0)),
+        backgroundColor: const Color(0xFFc2c2c2),
+        leading: const SizedBox(), // 기존의 뒤로가기 버튼을 없애기 위해 추가
+        actions: <Widget>[
+          IconButton(
+              icon: const Icon(
+                Icons.arrow_back,
+                size: 40.0, // 아이콘 크기 조절
+              ),
+              padding: const EdgeInsets.all(8.0), // 아이콘 주위의 패딩 설정
+              onPressed: () {
+                Navigator.pop(context); // 뒤로가기 기능
+              }),
+        ],
       ),
-      body: Center(
-        // Center 위젯을 추가하여 컬럼을 화면 중앙에 정렬합니다.
-        child: Container(
-          height: 100,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
-            children: <Widget>[
-              ElevatedButton(
-                style: style,
-                onPressed: () {
-                  String videoUrl =
-                      "https://www.youtube.com/watch?v=UOfcP_5CjSk";
-                  String videotitle =
-                      "[Playlist] 듣기만해도 심장이 콩닥콩닥 설레는 노래 모음 | 귓구녕이감동"; // 원하는 비디오 제목을 지정
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (_) =>
-                          Jisoo_flower_part1.fromUrl(videoUrl, videotitle),
+      body: Container(
+        color: const Color(0xFF538BDE),
+        child: ListView(
+          padding: const EdgeInsets.only(left: 15, right: 15),
+          // Center 위젯을 추가하여 컬럼을 화면 중앙에 정렬합니다.
+          children: <Widget>[
+            const Text('0단계: 기본 동작', style: TextStyle(fontSize: 20)),
+            Container(
+              height: 100,
+              child: GridView.count(
+                crossAxisCount: 4,
+                padding: const EdgeInsets.only(left: 5, right: 5),
+                mainAxisSpacing: 5.0,
+                crossAxisSpacing: 5.0,
+                children: <Widget>[
+                  InkWell(
+                    onTap: () {
+                      String videoUrl = "https://youtu.be/X1d9VKTG9gM";
+                      String videotitle = "0단계_Y동작"; // 원하는 비디오 제목을 지정
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) =>
+                              Jisoo_flower_Y.fromUrl(videoUrl, videotitle),
+                        ),
+                      );
+                    },
+                    child: Semantics(
+                      label: '기본동작 Y동작',
+                      child: Image.asset('assets/images/페스티벌/0단계/기본Y동작.png',
+                          fit: BoxFit.fill),
                     ),
-                  );
-                },
-                child: const Text('Part1 : '),
+                  ),
+                ],
               ),
-              const SizedBox(height: 15),
-              ElevatedButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('Part2 : '),
-              ),
-              const SizedBox(height: 15),
-              ElevatedButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('Part3 : '),
-              ),
-              const SizedBox(height: 15),
-              ElevatedButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('Part4 : '),
-              ),
-              const SizedBox(height: 15),
-              ElevatedButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('Part5 : '),
-              ),
-              const SizedBox(height: 15),
-              ElevatedButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('Part6 : '),
-              ),
-              const SizedBox(height: 15),
-              ElevatedButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('Part7 : '),
-              ),
-              const SizedBox(height: 15),
-              ElevatedButton(
-                style: style,
-                onPressed: () {},
-                child: const Text('Part8 : '),
-              )
-              // 이후 Part2, Part3 등의 버튼도 위와 같은 방식으로 생성자에 인수를 전달해주어야 합니다.
-              // ...
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
-
-// class JisooFlower2 extends StatefulWidget {
-//   const JisooFlower2({Key? key}) : super(key: key);
-
-//   @override
-//   State<JisooFlower2> createState() => _JIsooFlower2State();
-// }
-
-// class _JIsooFlower2State extends State<JisooFlower2> {
-//   @override
-//   Widget build(BuildContext context) {
-//     final ButtonStyle style = ElevatedButton.styleFrom(
-//         textStyle: const TextStyle(fontSize: 20), minimumSize: Size(80, 60));
-//     return Scaffold(
-//       appBar: AppBar(
-//         title: Text("Jisoo_flower"),
-//       ),
-//       body: Center(
-//         // Center 위젯을 추가하여 컬럼을 화면 중앙에 정렬합니다.
-//         child: Container(
-//           height: 200,
-//           child: ListView(
-//             scrollDirection: Axis.horizontal,
-//             children: <Widget>[
-//               ElevatedButton(
-//                 style: style,
-//                 onPressed: () {
-//                   String videoUrl =
-//                       "https://www.youtube.com/watch?v=UOfcP_5CjSk";
-//                   String videotitle =
-//                       "[Playlist] 듣기만해도 심장이 콩닥콩닥 설레는 노래 모음 | 귓구녕이감동"; // 원하는 비디오 제목을 지정
-//                   Navigator.push(
-//                     context,
-//                     MaterialPageRoute(
-//                       builder: (_) =>
-//                           Jisoo_flower_part1.fromUrl(videoUrl, videotitle),
-//                     ),
-//                   );
-//                 },
-//                 child: const Text('Part1 : '),
-//               ),
-//               const SizedBox(height: 15),
-//               ElevatedButton(
-//                 style: style,
-//                 onPressed: () {},
-//                 child: const Text('Part2 : '),
-//               ),
-//               const SizedBox(height: 15),
-//               ElevatedButton(
-//                 style: style,
-//                 onPressed: () {},
-//                 child: const Text('Part3 : '),
-//               ),
-//               const SizedBox(height: 15),
-//               ElevatedButton(
-//                 style: style,
-//                 onPressed: () {},
-//                 child: const Text('Part4 : '),
-//               ),
-//               const SizedBox(height: 15),
-//               ElevatedButton(
-//                 style: style,
-//                 onPressed: () {},
-//                 child: const Text('Part5 : '),
-//               ),
-//               const SizedBox(height: 15),
-//               ElevatedButton(
-//                 style: style,
-//                 onPressed: () {},
-//                 child: const Text('Part6 : '),
-//               ),
-//               const SizedBox(height: 15),
-//               ElevatedButton(
-//                 style: style,
-//                 onPressed: () {},
-//                 child: const Text('Part7 : '),
-//               ),
-//               const SizedBox(height: 15),
-//               ElevatedButton(
-//                 style: style,
-//                 onPressed: () {},
-//                 child: const Text('Part8 : '),
-//               )
-//               // 이후 Part2, Part3 등의 버튼도 위와 같은 방식으로 생성자에 인수를 전달해주어야 합니다.
-//               // ...
-//             ],
-//           ),
-//         ),
-//       ),
-//     );
-//   }
-// }

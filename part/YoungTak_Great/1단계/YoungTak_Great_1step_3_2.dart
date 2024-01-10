@@ -1,22 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class Jisoo_flower_part1 extends StatefulWidget {
+class YoungTak_Great_1step_3_2 extends StatefulWidget {
   final String _videoID;
   final String _videoTitle;
 
-  Jisoo_flower_part1(this._videoID, this._videoTitle);
+  YoungTak_Great_1step_3_2(this._videoID, this._videoTitle);
 
-  factory Jisoo_flower_part1.fromUrl(String videoUrl, String videoTitle) {
+  factory YoungTak_Great_1step_3_2.fromUrl(String videoUrl, String videoTitle) {
     String videoID = extractVideoIdFromUrl(videoUrl);
-    return Jisoo_flower_part1(videoID, videoTitle);
+    return YoungTak_Great_1step_3_2(videoID, videoTitle);
   }
   @override
-  Jisoo_flower_part1State createState() => Jisoo_flower_part1State();
+  YoungTak_Great_1step_3_2State createState() =>
+      YoungTak_Great_1step_3_2State();
 
   static String extractVideoIdFromUrl(String url) {
     RegExp regExp = RegExp(
-      r'^https:\/\/www.youtube.com\/watch\?v=(.*)$',
+      r'^https:\/\/youtu\.be\/(.*)$',
     );
     Match? match = regExp.firstMatch(url);
     if (match != null && match.groupCount >= 1) {
@@ -26,7 +27,7 @@ class Jisoo_flower_part1 extends StatefulWidget {
   }
 }
 
-class Jisoo_flower_part1State extends State<Jisoo_flower_part1> {
+class YoungTak_Great_1step_3_2State extends State<YoungTak_Great_1step_3_2> {
   late YoutubePlayerController _controller;
 
   @override
@@ -36,15 +37,14 @@ class Jisoo_flower_part1State extends State<Jisoo_flower_part1> {
       initialVideoId: widget._videoID,
       flags: const YoutubePlayerFlags(
         mute: false,
-        autoPlay: true,
+        autoPlay: false,
         disableDragSeek: false,
-        loop: false,
+        loop: true,
         isLive: false,
         forceHD: false,
         enableCaption: true,
       ),
     );
-    super.initState();
   }
 
   @override
