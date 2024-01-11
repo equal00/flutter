@@ -43,7 +43,7 @@ class _OrangeCaramelCatalenaState extends State<OrangeCaramelCatalena> {
             image: DecorationImage(
               image: AssetImage(
                   'assets/images/까탈레나 상단바.png'), // 원하시는 이미지 경로를 사용하세요.
-              fit: BoxFit.cover,
+              fit: BoxFit.fitWidth,
             ),
           ),
           child: AppBar(
@@ -76,6 +76,7 @@ class _OrangeCaramelCatalenaState extends State<OrangeCaramelCatalena> {
             AspectRatio(
               aspectRatio: 2.0,
               child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 mainAxisSpacing: 5.0,
@@ -184,6 +185,7 @@ class _OrangeCaramelCatalenaState extends State<OrangeCaramelCatalena> {
             AspectRatio(
               aspectRatio: 1.0,
               child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 mainAxisSpacing: 5.0,
@@ -466,6 +468,7 @@ class _OrangeCaramelCatalenaState extends State<OrangeCaramelCatalena> {
             AspectRatio(
               aspectRatio: 4.0,
               child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 mainAxisSpacing: 5.0,

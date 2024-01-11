@@ -43,9 +43,9 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
           decoration: const BoxDecoration(
             // 배경 이미지 설정
             image: DecorationImage(
-                image: AssetImage('assets/images/페스티벌 상단바.png'),
-                fit: BoxFit.fitWidth // 원하시는 이미지 경로를 사용하세요.
-                ),
+              image: AssetImage('assets/images/페스티벌 상단바.png'),
+              fit: BoxFit.fitWidth, // 원하시는 이미지 경로를 사용하세요.
+            ),
           ),
           child: AppBar(
             automaticallyImplyLeading: false,
@@ -71,12 +71,13 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
         color: const Color(0xFF538BDE),
         child: ListView(
           padding: const EdgeInsets.only(left: 15, right: 15),
-          // Center 위젯을 추가하여 컬럼을 화면 중앙에 정렬합니다.
+          // Center 위젯을 추가하여 컬럼을 화면 중앙에 정렬합7니다.
           children: <Widget>[
             const Text('0단계: 기본 동작', style: TextStyle(fontSize: 20)),
             AspectRatio(
               aspectRatio: 4.0,
               child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 mainAxisSpacing: 5.0,
@@ -136,7 +137,6 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                           fit: BoxFit.fill),
                     ),
                   ),
-
                   InkWell(
                     onTap: () {
                       String videoUrl = "https://youtu.be/o5LVa6U4LhU";
@@ -155,7 +155,6 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                           fit: BoxFit.fill),
                     ),
                   ),
-
                   // const SizedBox(width: 5),
                   // ElevatedButton(
                   //   onPressed: () async {
@@ -184,6 +183,7 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
             AspectRatio(
               aspectRatio: 1.0,
               child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 mainAxisSpacing: 5.0,
@@ -495,6 +495,7 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
             AspectRatio(
               aspectRatio: 4.0,
               child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 mainAxisSpacing: 5.0,

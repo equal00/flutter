@@ -40,6 +40,7 @@ class _JIsooFlowerState extends State<JisooFlower> {
             Container(
               height: 100,
               child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 mainAxisSpacing: 5.0,

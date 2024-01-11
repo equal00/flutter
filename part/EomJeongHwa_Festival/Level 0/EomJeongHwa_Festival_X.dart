@@ -15,13 +15,22 @@ class EomJeongHwa_Festival_X extends StatefulWidget {
   EomJeongHwa_Festival_XState createState() => EomJeongHwa_Festival_XState();
 
   static String extractVideoIdFromUrl(String url) {
-    RegExp regExp = RegExp(
+    RegExp regExpFullUrl = RegExp(
+      r'^https:\/\/(www\.)?youtube\.com\/shorts\/([^&]*).*',
+    );
+    RegExp regExpShortUrl = RegExp(
       r'^https:\/\/youtu\.be\/(.*)$',
     );
-    Match? match = regExp.firstMatch(url);
-    if (match != null && match.groupCount >= 1) {
-      return match.group(1) ?? '';
+
+    Match? matchFullUrl = regExpFullUrl.firstMatch(url);
+    Match? matchShortUrl = regExpShortUrl.firstMatch(url);
+
+    if (matchFullUrl != null && matchFullUrl.groupCount >= 2) {
+      return matchFullUrl.group(2) ?? '';
+    } else if (matchShortUrl != null && matchShortUrl.groupCount >= 1) {
+      return matchShortUrl.group(1) ?? '';
     }
+
     return '';
   }
 }
@@ -53,20 +62,34 @@ class EomJeongHwa_Festival_XState extends State<EomJeongHwa_Festival_X> {
       appBar: AppBar(
         title: Text(
           widget._videoTitle,
-          style: TextStyle(fontSize: 20.0),
+          style: const TextStyle(fontSize: 20.0),
         ),
       ),
-      body: YoutubePlayer(
-        key: ObjectKey(_controller),
-        controller: _controller,
-        actionsPadding: const EdgeInsets.only(left: 16.0),
-        bottomActions: [
-          CurrentPosition(),
-          const SizedBox(width: 10.0),
-          ProgressBar(isExpanded: true),
-          const SizedBox(width: 10.0),
-          RemainingDuration(),
-          //FullScreenButton(),
+      body: Column(
+        children: <Widget>[
+          AspectRatio(
+            aspectRatio: 9 / 12,
+            child: YoutubePlayer(
+              key: ObjectKey(_controller),
+              controller: _controller,
+              actionsPadding: const EdgeInsets.only(left: 16.0),
+              bottomActions: [
+                CurrentPosition(),
+                const SizedBox(width: 10.0),
+                ProgressBar(isExpanded: true),
+                const SizedBox(width: 10.0),
+                RemainingDuration(),
+                //FullScreenButton(),
+              ],
+            ),
+          ),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text(
+              '여기에 원하는 텍스트를 입력하세요.',
+              style: TextStyle(fontSize: 16.0),
+            ),
+          ),
         ],
       ),
     );

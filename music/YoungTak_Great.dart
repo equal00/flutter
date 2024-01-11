@@ -44,7 +44,7 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
             image: DecorationImage(
               image: AssetImage(
                   'assets/images/찐이야 상단바.png'), // 원하시는 이미지 경로를 사용하세요.
-              fit: BoxFit.cover,
+              fit: BoxFit.fitWidth,
             ),
           ),
           child: AppBar(
@@ -159,8 +159,9 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/06eazjk76BM";
-                      String videotitle = "Great _ 0step _ 5"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/Ux4aZGse02o";
+                      String videotitle = "테스트 영상"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
@@ -182,6 +183,7 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
             AspectRatio(
               aspectRatio: 1.0,
               child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 mainAxisSpacing: 5.0,
@@ -488,6 +490,7 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
             AspectRatio(
               aspectRatio: 4.0,
               child: GridView.count(
+                physics: const NeverScrollableScrollPhysics(),
                 crossAxisCount: 4,
                 padding: const EdgeInsets.only(left: 5, right: 5),
                 mainAxisSpacing: 5.0,
@@ -507,7 +510,7 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                     },
                     child: Semantics(
                       label: '2단계 part1',
-                      child: Image.asset('assets/images/찐이야/2단계/Part1.png',
+                      child: Image.asset('assets/images/찐이야/2단계/part1.png',
                           fit: BoxFit.cover),
                     ),
                   ),
@@ -525,7 +528,7 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                     },
                     child: Semantics(
                       label: '2단계 part2',
-                      child: Image.asset('assets/images/찐이야/2단계/Part2.png',
+                      child: Image.asset('assets/images/찐이야/2단계/part2.png',
                           fit: BoxFit.cover),
                     ),
                   ),
@@ -543,7 +546,7 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                     },
                     child: Semantics(
                       label: '2단계 part3',
-                      child: Image.asset('assets/images/찐이야/2단계/Part3.png',
+                      child: Image.asset('assets/images/찐이야/2단계/part3.png',
                           fit: BoxFit.cover),
                     ),
                   ),
@@ -561,7 +564,7 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                     },
                     child: Semantics(
                       label: '2단계 part4',
-                      child: Image.asset('assets/images/찐이야/2단계/Part4.png',
+                      child: Image.asset('assets/images/찐이야/2단계/part4.png',
                           fit: BoxFit.cover),
                     ),
                   ),

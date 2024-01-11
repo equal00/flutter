@@ -15,13 +15,22 @@ class Jisoo_flower_Y extends StatefulWidget {
   Jisoo_flower_YState createState() => Jisoo_flower_YState();
 
   static String extractVideoIdFromUrl(String url) {
-    RegExp regExp = RegExp(
+    RegExp regExpFullUrl = RegExp(
+      r'^https:\/\/(www\.)?youtube\.com\/shorts\/([^&]*).*',
+    );
+    RegExp regExpShortUrl = RegExp(
       r'^https:\/\/youtu\.be\/(.*)$',
     );
-    Match? match = regExp.firstMatch(url);
-    if (match != null && match.groupCount >= 1) {
-      return match.group(1) ?? '';
+
+    Match? matchFullUrl = regExpFullUrl.firstMatch(url);
+    Match? matchShortUrl = regExpShortUrl.firstMatch(url);
+
+    if (matchFullUrl != null && matchFullUrl.groupCount >= 2) {
+      return matchFullUrl.group(2) ?? '';
+    } else if (matchShortUrl != null && matchShortUrl.groupCount >= 1) {
+      return matchShortUrl.group(1) ?? '';
     }
+
     return '';
   }
 }
