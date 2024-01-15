@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/music%20genre/Tort.dart';
 import 'package:flutter_application_1/music%20genre/kpop.dart';
+import 'package:flutter_application_1/music%20genre/shorts.dart';
 
 /// This is the stateful widget that the main application instantiates.
 class GenerPage extends StatefulWidget {
@@ -17,7 +18,6 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: preferredSize.height,
       child: Image.asset(
         'assets/images/상단바.png',
         fit: BoxFit.cover,
@@ -69,7 +69,10 @@ class _GenerPageState extends State<GenerPage> {
             ),
           ),
           InkWell(
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (_) => shorts()));
+            },
             child: Semantics(
               label: '숏폼 장르',
               child: Image.asset(

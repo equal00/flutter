@@ -57,8 +57,8 @@ class _MainPageState extends State<MainPage> {
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            label: '검색',
+            icon: Icon(Icons.menu),
+            label: '전체음악',
           ),
         ],
         currentIndex: _selectedIndex,

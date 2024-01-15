@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
 
-class OrangeCaramel_Catalena_1step_1_4 extends StatefulWidget {
+class youtube_player extends StatefulWidget {
   final String _videoID;
   final String _videoTitle;
 
-  OrangeCaramel_Catalena_1step_1_4(this._videoID, this._videoTitle);
+  youtube_player(this._videoID, this._videoTitle);
 
-  factory OrangeCaramel_Catalena_1step_1_4.fromUrl(
-      String videoUrl, String videoTitle) {
+  factory youtube_player.fromUrl(String videoUrl, String videoTitle) {
     String videoID = extractVideoIdFromUrl(videoUrl);
-    return OrangeCaramel_Catalena_1step_1_4(videoID, videoTitle);
+    return youtube_player(videoID, videoTitle);
   }
   @override
-  OrangeCaramel_Catalena_1step_1_4State createState() =>
-      OrangeCaramel_Catalena_1step_1_4State();
+  youtube_playerState createState() => youtube_playerState();
 
   static String extractVideoIdFromUrl(String url) {
     RegExp regExpFullUrl = RegExp(
@@ -37,8 +35,7 @@ class OrangeCaramel_Catalena_1step_1_4 extends StatefulWidget {
   }
 }
 
-class OrangeCaramel_Catalena_1step_1_4State
-    extends State<OrangeCaramel_Catalena_1step_1_4> {
+class youtube_playerState extends State<youtube_player> {
   late YoutubePlayerController _controller;
 
   @override
@@ -71,18 +68,21 @@ class OrangeCaramel_Catalena_1step_1_4State
         children: <Widget>[
           AspectRatio(
             aspectRatio: 9 / 12,
-            child: YoutubePlayer(
-              key: ObjectKey(_controller),
-              controller: _controller,
-              actionsPadding: const EdgeInsets.only(left: 16.0),
-              bottomActions: [
-                CurrentPosition(),
-                const SizedBox(width: 10.0),
-                ProgressBar(isExpanded: true),
-                const SizedBox(width: 10.0),
-                RemainingDuration(),
-                //FullScreenButton(),
-              ],
+            child: Semantics(
+              label: '영상 시작',
+              child: YoutubePlayer(
+                key: ObjectKey(_controller),
+                controller: _controller,
+                actionsPadding: const EdgeInsets.only(left: 16.0),
+                bottomActions: [
+                  CurrentPosition(),
+                  const SizedBox(width: 10.0),
+                  ProgressBar(isExpanded: true),
+                  const SizedBox(width: 10.0),
+                  RemainingDuration(),
+                  //FullScreenButton(),
+                ],
+              ),
             ),
           ),
           const Padding(

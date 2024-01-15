@@ -14,10 +14,9 @@ class Searchpage extends StatelessWidget {
         preferredSize: Size.fromHeight(kToolbarHeight), // AppBar의 기본 높이
         child: Container(
           decoration: const BoxDecoration(
-            // 배경 이미지 설정
             image: DecorationImage(
               image: AssetImage(
-                  'assets/images/상단 음악찾기.png'), // 원하시는 이미지 경로를 사용하세요.
+                  'assets/images/전체음악 상단바.png'), // 원하시는 이미지 경로를 사용하세요.
               fit: BoxFit.cover,
             ),
           ),
@@ -35,8 +34,9 @@ class Searchpage extends StatelessWidget {
                 children: <Widget>[
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
-                        shadowColor: Colors.transparent),
+                      elevation: 0,
+                      primary: const Color(0xFFEBEBEE),
+                    ),
                     onPressed: () {
                       Navigator.push(context,
                           MaterialPageRoute(builder: (_) => JisooFlower()));
@@ -55,8 +55,9 @@ class Searchpage extends StatelessWidget {
                   const SizedBox(width: 5),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
-                        shadowColor: Colors.transparent),
+                      elevation: 0,
+                      primary: const Color(0xFFEBEBEE),
+                    ),
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -77,8 +78,9 @@ class Searchpage extends StatelessWidget {
                   const SizedBox(width: 5),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
-                        shadowColor: Colors.transparent),
+                      elevation: 0,
+                      primary: const Color(0xFFEBEBEE),
+                    ),
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -98,8 +100,8 @@ class Searchpage extends StatelessWidget {
                   ),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                      primary: Colors.transparent,
-                      shadowColor: Colors.transparent,
+                      elevation: 0,
+                      primary: const Color(0xFFEBEBEE),
                     ),
                     onPressed: () {
                       Navigator.push(context,

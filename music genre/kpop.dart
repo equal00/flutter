@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/music/EomJeongHwa_%20festival.dart';
-import 'package:flutter_application_1/music/Jisoo_flower.dart';
 import 'package:flutter_application_1/music/OrangeCaramel_Catalena.dart';
 
 class kpop extends StatefulWidget {
@@ -46,7 +45,7 @@ class _kpopState extends State<kpop> {
         ),
       ),
       body: Container(
-        color: const Color(0xFFEBEBEE),
+        color: const Color(0xFF538BDE),
         // Center 위젯을 추가하여 컬럼을 화면 중앙에 정렬합니다.
         child: ListView(
           children: <Widget>[
@@ -55,30 +54,12 @@ class _kpopState extends State<kpop> {
               height: 250,
               child: ListView(
                 children: <Widget>[
-                  ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
-                        shadowColor: Colors.transparent),
-                    onPressed: () {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (_) => JisooFlower()));
-                    },
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 10),
-                      child: Align(
-                        alignment: Alignment.centerLeft,
-                        child: Semantics(
-                          label: '지수의 꽃',
-                          child: Image.asset('assets/images/지수_꽃.png'),
-                        ),
-                      ),
-                    ),
-                  ),
                   const SizedBox(width: 5),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
-                        shadowColor: Colors.transparent),
+                      elevation: 0,
+                      primary: const Color(0xFF538BDE),
+                    ),
                     onPressed: () {
                       Navigator.push(
                           context,
@@ -99,8 +80,9 @@ class _kpopState extends State<kpop> {
                   const SizedBox(width: 5),
                   ElevatedButton(
                     style: ElevatedButton.styleFrom(
-                        primary: Colors.transparent,
-                        shadowColor: Colors.transparent),
+                      elevation: 0,
+                      primary: const Color(0xFF538BDE),
+                    ),
                     onPressed: () {
                       Navigator.push(
                           context,

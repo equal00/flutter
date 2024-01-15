@@ -1,30 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../part/EomJeongHwa_Festival/Level 0/EomJeongHwa_Fastival_W.dart';
-import '../part/EomJeongHwa_Festival/Level 0/EomJeongHwa_Festival_X.dart';
-import '../part/EomJeongHwa_Festival/Level 0/EomJeongHwa_Festival_Y.dart';
-import '../part/EomJeongHwa_Festival/Level 0/EomJeongHwa_Festival_sub.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part1_1.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part1_2.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part1_3.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part1_4.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part1_5.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part2_1.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part2_2.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part2_3.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part3_1.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part3_2.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part3_3.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part3_4.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part4_1.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part4_2.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part4_3.dart';
-import '../part/EomJeongHwa_Festival/Level 1/EomJeongHwa_Festival_part4_4.dart';
-import '../part/EomJeongHwa_Festival/Level 2/EomJeongHwa_Festival_part1.dart';
-import '../part/EomJeongHwa_Festival/Level 2/EomJeongHwa_Festival_part2.dart';
-import '../part/EomJeongHwa_Festival/Level 2/EomJeongHwa_Festival_part3.dart';
-import '../part/EomJeongHwa_Festival/Level 2/EomJeongHwa_Festival_part4.dart';
-import '../part/EomJeongHwa_Festival/Level 3/EomJeongHwa_Festival_part_level3.dart';
+import '../youtube_player.dart';
 
 class EomJeongHwaFestival extends StatefulWidget {
   const EomJeongHwaFestival({Key? key}) : super(key: key);
@@ -42,9 +18,11 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
         child: Container(
           decoration: const BoxDecoration(
             // 배경 이미지 설정
+            color: const Color(0xFFEBEBEE),
             image: DecorationImage(
               image: AssetImage('assets/images/페스티벌 상단바.png'),
-              fit: BoxFit.fitWidth, // 원하시는 이미지 경로를 사용하세요.
+              fit: BoxFit.contain, // 원하시는 이미지 경로를 사용하세요.
+              alignment: Alignment.bottomCenter,
             ),
           ),
           child: AppBar(
@@ -52,16 +30,19 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
             backgroundColor: Colors.transparent, // AppBar의 배경색을 투명하게 설정
             elevation: 0, // AppBar의 그림자 제거
             actions: <Widget>[
-              IconButton(
-                icon: Image.asset(
-                  'assets/images/화살표.png',
-                  fit: BoxFit.cover,
-                  height: 20,
-                  width: 35,
+              Semantics(
+                label: '뒤로가기',
+                child: IconButton(
+                  icon: Image.asset(
+                    'assets/images/화살표.png',
+                    fit: BoxFit.cover,
+                    height: 20,
+                    width: 35,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
               ),
             ],
           ),
@@ -85,13 +66,14 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/X1d9VKTG9gM";
-                      String videotitle = "0단계_Y동작"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/MI-KtvBkwxA";
+                      String videotitle = "페스티벌_ 기본동작_ Y"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_Y.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -103,13 +85,14 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/SCj0oOXtcQ0";
-                      String videotitle = "0단계_X동작"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/KDIjdSXEnJA";
+                      String videotitle = "페스티벌_ 기본동작_ X"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_X.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -121,13 +104,14 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/fuluEcNRr7o";
-                      String videotitle = "0단계_W동작"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/xm8C8Ay52Dw";
+                      String videotitle = "페스티벌_ 기본동작_ W"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_W.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -139,13 +123,14 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/o5LVa6U4LhU";
-                      String videotitle = "0단계_차렷동작"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/9iOm16_jlgA";
+                      String videotitle = "페스티벌_ 기본동작_차렷동작"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_sub.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -191,14 +176,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/W5qQUbSGKNM";
+                      String videoUrl =
+                          "https://youtube.com/shorts/i8G4dp3MeMU";
                       String videotitle =
-                          "1단계_part1_1동작.양팔저울점프"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 1_1.양팔저울 점프 동작"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part1_1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -210,13 +196,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/kIJ2HyNlxMU";
-                      String videotitle = "1단계_part1_2동작.스마일"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/l7EiG14ZwSs";
+                      String videotitle =
+                          "페스티벌_ 1단계 part 1_2.스마일동작"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part1_2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -228,14 +216,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/QtV0UNWqrdI";
+                      String videoUrl =
+                          "https://youtube.com/shorts/eafndzTee9E";
                       String videotitle =
-                          "1단계_part1_3동작.작은풍차"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 1_3.작은풍차"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part1_3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -247,13 +236,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/emZWN6pq1C8";
-                      String videotitle = "1단계_part1_4동작.스마일"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/2lftDhoirNI";
+                      String videotitle =
+                          "페스티벌_ 1단계 part 1_4.스마일"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part1_4.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -265,14 +256,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/8SiESsCPtE8";
+                      String videoUrl =
+                          "https://youtube.com/shorts/9aZQP20lPvA";
                       String videotitle =
-                          "1단계_part1_5동작.작은풍차"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 1_5.작은풍차"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part1_5.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -284,14 +276,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/Isyd8K9X_QI";
+                      String videoUrl =
+                          "https://youtube.com/shorts/tkx5WidtKQ8";
                       String videotitle =
-                          "1단계_part2_1동작. YX동작"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 2_1.YX"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part2_1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -303,14 +296,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/_MSJ6C3HQiY";
+                      String videoUrl =
+                          "https://youtube.com/shorts/cRUkDpZs22Y";
                       String videotitle =
-                          "1단계_part2_2동작.큰원X제자리"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 2_2.큰원 X 제자리"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part2_2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -322,14 +316,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/-hawugjMNOk";
+                      String videoUrl =
+                          "https://youtube.com/shorts/gBqFgP8JPLY";
                       String videotitle =
-                          "1단계_part2_3동작.XY동작"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 2_3.XY"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part2_3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -341,14 +336,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/3EQsC8crmH4";
+                      String videoUrl =
+                          "https://youtube.com/shorts/wfcKHZAJpX8";
                       String videotitle =
-                          "1단계_part3 1동작_눈물닦기"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 3_1.눈물닦기"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part3_1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -360,14 +356,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/yZc_uo6j43o";
+                      String videoUrl =
+                          "https://youtube.com/shorts/mV0K54FKmJY";
                       String videotitle =
-                          "1단계_part3 2동작_작은풍차"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 3_2.작은풍차"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part3_2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -379,13 +376,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/61njY-IH7oM";
-                      String videotitle = "1단계_part3 3동작_오뚜기"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/c0FuKA9XW0g";
+                      String videotitle =
+                          "페스티벌_ 1단계 part 3_3.오뚜기"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part3_3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -397,14 +396,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/BowxS-yhnFQ";
+                      String videoUrl =
+                          "https://youtube.com/shorts/7HI-BNn5KbI";
                       String videotitle =
-                          "1단계_part3 4동작_작은풍차"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 3_4.작은풍차"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part3_4.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -416,13 +416,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/V3L_Ph60sgo";
-                      String videotitle = "1단계_part4 1동작_Y동작"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/CGK_gfGm8FM";
+                      String videotitle =
+                          "페스티벌_ 1단계 part 4_1.Y"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part4_1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -434,13 +436,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/8a2wFIdXpqY";
-                      String videotitle = "1단계_part4 2동작_몸통X"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/VrGyxLxm2FI";
+                      String videotitle =
+                          "페스티벌_ 1단계 part 4_2.몸통 X 동작"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part4_2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -452,14 +456,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/Ho_ATj4Ycpo";
+                      String videoUrl =
+                          "https://youtube.com/shorts/9kVDGHoeCdE";
                       String videotitle =
-                          "1단계_part4 3동작_양팔저울털기"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 4_3.팔 저울 털기"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part4_3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -471,14 +476,15 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/5RVQCkTXT5o";
+                      String videoUrl =
+                          "https://youtube.com/shorts/zt-LgY-4FcI";
                       String videotitle =
-                          "1단계_part4 4동작 으쓱으쓱"; // 원하는 비디오 제목을 지정
+                          "페스티벌_ 1단계 part 4_4.으쓱으쓱"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part4_4.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -503,13 +509,14 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/c_vvaxMthfw";
-                      String videotitle = "2단_1번째"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/sDmoBO9iZeE";
+                      String videotitle = "페스티벌_ 2단계 part 1"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -522,13 +529,14 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/II98pVYQpCw";
-                      String videotitle = "2단_2번째"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/iSM2eckZR6k";
+                      String videotitle = "페스티벌_ 2단계 part 2"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -541,13 +549,14 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/s5bY-2uE3dg";
-                      String videotitle = "2단_3번째"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/UmUv6tVqekw";
+                      String videotitle = "페스티벌_ 2단계 part 3"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -560,13 +569,14 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/C31DJp6Vd2Q";
-                      String videotitle = "2단_4번째"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/z93DVj7dCGo";
+                      String videotitle = "페스티벌_ 2단계 part 4"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => EomJeongHwa_Festival_part4.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -585,16 +595,16 @@ class _EomJeongHwaFestivalState extends State<EomJeongHwaFestival> {
               height: 125,
               child: ListView(
                 children: <Widget>[
-                  ElevatedButton(
-                    onPressed: () {
-                      String videoUrl = "https://youtu.be/wmjihqUTNUs";
-                      String videotitle = "3단계_마지막"; // 원하는 비디오 제목을 지정
+                  InkWell(
+                    onTap: () {
+                      String videoUrl =
+                          "https://youtube.com/shorts/0hVRmYYyRnc";
+                      String videotitle = "페스티벌_ 3단계"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                           builder: (_) =>
-                              EomJeongHwa_Festival_part_level3.fromUrl(
-                                  videoUrl, videotitle),
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },

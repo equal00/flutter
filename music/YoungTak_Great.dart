@@ -1,29 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/0단계/YoungTak_Great_0step_1.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/0단계/YoungTak_Great_0step_2.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/0단계/YoungTak_Great_0step_3.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/0단계/YoungTak_Great_0step_4.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/0단계/YoungTak_Great_0step_5.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_1_1.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_1_2.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_1_3.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_1_4.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_2_1.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_2_2.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_2_3.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_2_4.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_3_1.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_3_2.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_3_3.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_3_4.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_4_1.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_4_2.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/1단계/YoungTak_Great_1step_4_3.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/2단계/YoungTak_Great_part1.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/2단계/YoungTak_Great_part2.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/2단계/YoungTak_Great_part3.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/2단계/YoungTak_Great_part4.dart';
-import 'package:flutter_application_1/part/YoungTak_Great/3단계/YoungTak_Great_part_level3.dart';
+
+import '../youtube_player.dart';
 
 class YoungTakGreat extends StatefulWidget {
   const YoungTakGreat({Key? key}) : super(key: key);
@@ -41,10 +18,12 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
         child: Container(
           decoration: const BoxDecoration(
             // 배경 이미지 설정
+            color: const Color(0xFFEBEBEE),
             image: DecorationImage(
               image: AssetImage(
                   'assets/images/찐이야 상단바.png'), // 원하시는 이미지 경로를 사용하세요.
-              fit: BoxFit.fitWidth,
+              fit: BoxFit.contain,
+              alignment: Alignment.bottomCenter,
             ),
           ),
           child: AppBar(
@@ -52,16 +31,19 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
             backgroundColor: Colors.transparent, // AppBar의 배경색을 투명하게 설정
             elevation: 0, // AppBar의 그림자 제거
             actions: <Widget>[
-              IconButton(
-                icon: Image.asset(
-                  'assets/images/화살표.png',
-                  fit: BoxFit.cover,
-                  height: 20,
-                  width: 35,
+              Semantics(
+                label: '뒤로가기',
+                child: IconButton(
+                  icon: Image.asset(
+                    'assets/images/화살표.png',
+                    fit: BoxFit.cover,
+                    height: 20,
+                    width: 35,
+                  ),
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
                 ),
-                onPressed: () {
-                  Navigator.pop(context);
-                },
               ),
             ],
           ),
@@ -85,13 +67,14 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/InO9yTdbVj4";
-                      String videotitle = "Great _ 0step _ 1"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/eEjEUyy3ZPI";
+                      String videotitle = "찐이야 _ 기본동작_엄지척"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_0step_1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -103,13 +86,14 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/kpOcbiH89wU";
-                      String videotitle = "Great _ 0step _ 2"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/eQ6uoIrrpXs";
+                      String videotitle = "찐이야_기본동작_엄지척대각선"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_0step_2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -122,13 +106,14 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/vP4dnv0cTNA";
-                      String videotitle = "Great _ 0step _ 3"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/AUKIPMCVMzs";
+                      String videotitle = "찐이야 _ 기본동작_엄지척반원"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_0step_3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -141,13 +126,14 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/KqzgXMjr6Qo";
-                      String videotitle = "Great _ 0step _ 4"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/0Oa7yySndWE";
+                      String videotitle = "찐이야_기본동작 _하트"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_0step_4.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -160,13 +146,13 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   InkWell(
                     onTap: () {
                       String videoUrl =
-                          "https://youtube.com/shorts/Ux4aZGse02o";
-                      String videotitle = "테스트 영상"; // 원하는 비디오 제목을 지정
+                          "https://youtube.com/shorts/OkExpCmdp7Y";
+                      String videotitle = "찐이야 _ 기본동작_총모양"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_0step_5.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -191,14 +177,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/qKQ_K_emSA4";
+                      String videoUrl =
+                          "https://youtube.com/shorts/yuG3NQT_pNU";
                       String videotitle =
-                          "Great _ 1step _ part 1 - 1"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 1_찐이야"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_1_1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -210,14 +197,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/Pgq0RIEPv6g";
+                      String videoUrl =
+                          "https://youtube.com/shorts/f27f-WmVO5A";
                       String videotitle =
-                          "Great _ 1step _ part 1 - 2"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 1_엄지척 대각선"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_1_2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -230,14 +218,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/X4xop55oX9Y";
+                      String videoUrl =
+                          "https://youtube.com/shorts/SUnq3BCnZN4";
                       String videotitle =
-                          "Great _ 1step _ part 1 - 3"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 1_엄지척 반원"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_1_3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -250,14 +239,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/_F8K6ydCSg8";
+                      String videoUrl =
+                          "https://youtube.com/shorts/-K5ZDZMmAHY";
                       String videotitle =
-                          "Great _ 1step _ part 1 - 4"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 1_반대엄지척대각선"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_1_4.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -270,14 +260,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/9ZlGSkGxnhI";
+                      String videoUrl =
+                          "https://youtube.com/shorts/HmPOiNVDeps";
                       String videotitle =
-                          "Great _ 1step _ part 2 - 1"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 2_살펴보기"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_2_1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -289,14 +280,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/MPwkpi0yV2A";
+                      String videoUrl =
+                          "https://youtube.com/shorts/9jUX53SIIXU";
                       String videotitle =
-                          "Great _ 1step _ part 2 - 2"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 2_놀라는 모습"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_2_2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -309,14 +301,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/tm82hLm4Zm4";
+                      String videoUrl =
+                          "https://youtube.com/shorts/xznZ3fLIKds";
                       String videotitle =
-                          "Great _ 1step _ part 2 - 3"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 2_총모양"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_2_3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -328,14 +321,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/3t2si0h40Gk";
+                      String videoUrl =
+                          "https://youtube.com/shorts/G7JC-zzb2rQ";
                       String videotitle =
-                          "Great _ 1step _ part 2 - 4"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 2_후진"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_2_4.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -347,14 +341,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/eYa17wKwGKg";
+                      String videoUrl =
+                          "https://youtube.com/shorts/6DSakZ6hGxY";
                       String videotitle =
-                          "Great _ 1step _ part 3 - 1"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 3_찐이야"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_3_1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -366,14 +361,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/xDqlSa6tc-Q";
+                      String videoUrl =
+                          "https://youtube.com/shorts/6R-0UvjKxx4";
                       String videotitle =
-                          "Great _ 1step _ part 3 - 2"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 3_엄지척 대각선"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_3_2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -386,14 +382,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/RisT0W3bmUA";
+                      String videoUrl =
+                          "https://youtube.com/shorts/0Hv3PTnGKhU";
                       String videotitle =
-                          "Great _ 1step _ part 3 - 3"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 3_엄지척반원"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_3_3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -412,8 +409,8 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_3_4.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -426,14 +423,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/phmqzORbiR8";
+                      String videoUrl =
+                          "https://youtube.com/shorts/Xj-XVyK4f_E";
                       String videotitle =
-                          "Great _ 1step _ part 4 - 1"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 4_찐하게"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_4_1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -445,14 +443,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/v7AfnZxleIc";
+                      String videoUrl =
+                          "https://youtube.com/shorts/r2TjNE69R3A";
                       String videotitle =
-                          "Great _ 1step _ part 4 - 2"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 4_하트"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_4_2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -465,14 +464,15 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/hwCwgZtmEVw";
+                      String videoUrl =
+                          "https://youtube.com/shorts/2ccMxztronw";
                       String videotitle =
-                          "Great _ 1step _ part 4 - 4"; // 원하는 비디오 제목을 지정
+                          "찐이야_ 1단계 part 4_제자리 걸음"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_1step_4_3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -498,13 +498,14 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                 children: <Widget>[
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/ucgjLACTsTg";
-                      String videotitle = "Great _ 2step_1"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/dfjeYtww8YA";
+                      String videotitle = "찐이야_ 2단계_part 1"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_part1.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -516,13 +517,14 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                   ),
                   InkWell(
                     onTap: () {
-                      String videoUrl = "https://youtu.be/jjk-G38q0Ek";
-                      String videotitle = "Great _ 2step_2"; // 원하는 비디오 제목을 지정
+                      String videoUrl =
+                          "https://youtube.com/shorts/0ypdwDQtOdc";
+                      String videotitle = "찐이야_ 2단계 _part 2"; // 원하는 비디오 제목을 지정
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_part2.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -539,8 +541,8 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_part3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -557,8 +559,8 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_part4.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
@@ -583,8 +585,8 @@ class _YoungTakGreatState extends State<YoungTakGreat> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => YoungTak_Great_part_level3.fromUrl(
-                              videoUrl, videotitle),
+                          builder: (_) =>
+                              youtube_player.fromUrl(videoUrl, videotitle),
                         ),
                       );
                     },
